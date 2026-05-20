@@ -10,22 +10,29 @@
   <!-- Main page content starts here -->
   <header class="hero">
     <div class="container hero-content">
-      <p class="eyebrow">Web Development Student</p>
-      <h1>Building simple, thoughtful websites with an ocean-inspired style.</h1>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <p class="eyebrow">Computer Science and Statistics Student</p>
+      <h1 id="home">Maven Brown</h1>
       <p class="lead">
-        Welcome to my personal website. I am learning HTML and CSS while creating projects for my web development college course.
+        Welcome to my personal website. I am a Computer Science and Statistics double major at UNC Chapel Hill. Here is what I have been working on.
       </p>
       <a class="button" href="#projects">See my projects</a>
     </div>
   </header>
 
   <main>
-    <section class="section" id="bio">
+    <section class="section" id="about">
       <div class="container card">
-        <h2>Bio</h2>
+        <h2>About</h2>
         <p>
-          I am a beginning web developer who enjoys learning how to build clean, useful, and visually calm websites.
-          This site will grow as I add more class projects and practice new skills.
+          I am a Computer Science and Statistics double major at UNC Chapel Hill. I am learning web development skills and building projects to showcase my abilities.
         </p>
       </div>
     </section>
@@ -34,8 +41,23 @@
       <div class="container">
         <h2>Skills</h2>
         <div class="skills-list">
+          <div class="skill-item">Java</div>
+          <div class="skill-item">Python</div>
+          <div class="skill-item">R</div>
+          <div class="skill-item">C</div>
           <div class="skill-item">HTML</div>
           <div class="skill-item">CSS</div>
+          <div class="skill-item">SQL</div>
+          <div class="skill-item">FastAPI</div>
+          <div class="skill-item">Agentic Workflows</div>
+          <div class="skill-item">JavaFX</div>
+          <div class="skill-item">Git</div>
+          <div class="skill-item">Docker</div>
+          <div class="skill-item">Project Management</div>
+          <div class="skill-item">Adobe Premier Pro</div>
+          <div class="skill-item">Adobe Photoshop</div>
+          <div class="skill-item">Adobe Illustrator</div>
+          <div class="skill-item">Microsoft Excel</div>
           <div class="skill-item">Responsive layouts</div>
           <div class="skill-item">Web design basics</div>
         </div>
@@ -47,17 +69,28 @@
         <h2>Projects</h2>
         <div class="project-list">
           <article class="project-card">
-            <h3>Project One</h3>
-            <p>A simple practice project that will show my first steps with structure and styling.</p>
+            <h3>Debug to Learn</h3>
+            <p>A app that helps users learn debugging techniques through interactive exercises. A professor will generate code with an AI chatbot and assign students to debug that code.</p>
           </article>
           <article class="project-card">
-            <h3>Project Two</h3>
-            <p>A second project focused on cleaner layout choices, better spacing, and color balance.</p>
+            <h3>Scooby Doo Statistical Analysis</h3>
+            <p>A statistical analysis of the Scooby Doo series using R. Analyses how the characters affect the rating of that episode, and how Scooby Doo may have affected burglary rates.</p>
           </article>
           <article class="project-card">
-            <h3>Project Three</h3>
-            <p>An upcoming project where I will keep improving my HTML and CSS skills.</p>
+            <h3>URL Shortener</h3>
+            <p>A simple URL shortening service built with FastAPI and Pydantic.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container card contact-card">
+        <h2>Contact</h2>
+        <p>If you'd like to connect, you can reach me here:</p>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/maven-brown-650328354/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="mailto:maveneb@gmail.com">Email Me</a>
         </div>
       </div>
     </section>

@@ -33,6 +33,24 @@ a {
 	text-align: center;
 }
 
+.site-nav {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	margin-bottom: 2rem;
+	padding: 0.85rem 1rem;
+	background: rgba(255, 255, 255, 0.14);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 999px;
+}
+
+.site-nav a {
+	padding: 0.25rem 0.5rem;
+	font-weight: bold;
+	color: #f5fffd;
+}
+
 .eyebrow {
 	margin: 0 0 0.75rem;
 	letter-spacing: 0.15em;
@@ -112,10 +130,36 @@ a {
 	color: #15313d;
 }
 
+.contact-card {
+	text-align: center;
+}
+
+.contact-links {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-top: 1.25rem;
+}
+
+.contact-links a {
+	display: inline-block;
+	padding: 0.9rem 1.2rem;
+	border-radius: 999px;
+	background: #e3f5f2;
+	color: #0f4c5c;
+	font-weight: bold;
+	border: 1px solid #c7e7e2;
+}
+
 /* Small screen adjustments */
 @media (max-width: 600px) {
 	.hero {
 		padding: 4rem 0 3rem;
+	}
+
+	.site-nav {
+		border-radius: 1rem;
 	}
 
 	.section {
