@@ -157,10 +157,24 @@ a {
 	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
 }
 
+
 .project-card {
-	flex: 1 1 220px;
-	padding: 1.25rem;
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
 }
+.project-card p {
+    margin: 0.6rem 0;
+    line-height: 1.6;
+}
+.project-card {
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
 
 .project-card:hover {
 	transform: translateY(-4px);
