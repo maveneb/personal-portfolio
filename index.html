@@ -19,8 +19,13 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <p class="eyebrow">Computer Science and Statistics</p>
-      <h1 id="home">Maven Brown</h1>
+      <div class="hero-header">
+        <img class="profile-pic" src="img/pic of me 2.png" alt="Maven Brown portrait">
+        <div class="hero-text">
+          <p class="eyebrow">Computer Science and Statistics</p>
+          <h1 id="home">Maven Brown</h1>
+        </div>
+      </div>
       <p class="lead">
         Welcome to my portfolio. I am a Computer Science and Statistics double major at UNC Chapel Hill, with experience building practical projects in software development, data analysis, and web development.
       </p>
@@ -35,6 +40,22 @@
         <p>
           I am a Computer Science and Statistics double major at UNC Chapel Hill who is developing strong skills in programming, data analysis, and full-stack problem solving. I enjoy creating projects that demonstrate both technical ability and attention to detail.
         </p>
+      </div>
+    </section>
+
+    <section class="section" id="classes">
+      <div class="container card">
+        <h2>UNC Courses</h2>
+        <p>
+          These are a few of the courses I have taken at UNC:
+        </p>
+        <ul class="course-list">
+          <li>COMP 423: Foundations of Software Engineering</li>
+          <li>COMP 421: Files and Databases</li>
+          <li>COMP 426: Modern Web Programming</li>
+          <li>STOR 320: Data Science</li>
+          <li>STOR 455: Methods Data Analysis</li>
+        </ul>
       </div>
     </section>
 
@@ -60,7 +81,7 @@
           <div class="skill-item">Adobe Illustrator</div>
           <div class="skill-item">Microsoft Excel</div>
           <div class="skill-item">Responsive layouts</div>
-          <div class="skill-item">Web design basics</div>
+          <div class="skill-item">Web Design</div>
         </div>
       </div>
     </section>
@@ -68,7 +89,7 @@
     <section class="section" id="projects">
   <div class="container">
     <h2>Projects</h2>
-    <div class="project-list">
+    <div class="project-list carousel" aria-label="Project carousel">
 
       <article class="project-card">
   <h3>Debug to Learn</h3>
@@ -200,7 +221,7 @@
     <section class="section" id="certifications">
       <div class="container">
         <h2>Certifications</h2>
-        <div class="project-list">
+        <div class="certification-list carousel" aria-label="Certification carousel">
           <article class="project-card">
             <h3>Web Development Certification</h3>
             <p>
@@ -268,5 +289,76 @@
       </div>
     </section>
   </main>
+
+  <script>
+    document.querySelectorAll('.carousel').forEach((container) => {
+      const cards = Array.from(container.children);
+      if (cards.length === 0) return;
+
+      let activeIndex = 0;
+      let inHorizontalMode = false;
+
+      const updateActiveCard = () => {
+        cards.forEach((card, index) => {
+          card.classList.toggle('active', index === activeIndex);
+        });
+      };
+
+      const getStepAmount = () => {
+        const firstCard = cards[0];
+        const styles = getComputedStyle(container);
+        const gap = parseFloat(styles.columnGap || styles.gap || 0);
+        return firstCard.getBoundingClientRect().width + gap;
+      };
+
+      const scrollToCard = (index) => {
+        activeIndex = Math.max(0, Math.min(index, cards.length - 1));
+        const left = getStepAmount() * activeIndex;
+        container.scrollTo({ left, behavior: 'smooth' });
+        updateActiveCard();
+      };
+
+      const isFullyInView = () => {
+        const rect = container.getBoundingClientRect();
+        return rect.top >= 0 && rect.bottom <= window.innerHeight;
+      };
+
+      updateActiveCard();
+
+      container.addEventListener('wheel', (event) => {
+        const rect = container.getBoundingClientRect();
+        const insideSection = event.clientY >= rect.top - 40 && event.clientY <= rect.bottom + 40;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+
+        if (!insideSection || !isFullyInView()) return;
+
+        if (maxScroll <= 0) {
+          return;
+        }
+
+        const atStart = container.scrollLeft <= 2;
+        const atEnd = container.scrollLeft >= maxScroll - 2;
+
+        if (!isFullyInView()) return;
+
+        if (atStart && event.deltaY < 0) {
+          inHorizontalMode = false;
+          return;
+        }
+
+        if (atEnd && event.deltaY > 0) {
+          inHorizontalMode = false;
+          return;
+        }
+
+        if (event.deltaY !== 0) {
+          event.preventDefault();
+          inHorizontalMode = true;
+          const direction = event.deltaY > 0 ? 1 : -1;
+          scrollToCard(activeIndex + direction);
+        }
+      }, { passive: false });
+    });
+  </script>
 </body>
 </html>
