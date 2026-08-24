@@ -291,74 +291,76 @@
   </main>
 
   <script>
-    document.querySelectorAll('.carousel').forEach((container) => {
-      const cards = Array.from(container.children);
-      if (cards.length === 0) return;
+    const isMobile = window.matchMedia('(max-width: 600px)').matches;
 
-      let activeIndex = 0;
-      let inHorizontalMode = false;
+    if (!isMobile) {
+      document.querySelectorAll('.carousel').forEach((container) => {
+        const cards = Array.from(container.children);
+        if (cards.length === 0) return;
 
-      const updateActiveCard = () => {
-        cards.forEach((card, index) => {
-          card.classList.toggle('active', index === activeIndex);
-        });
-      };
+        let activeIndex = 0;
+        let inHorizontalMode = false;
 
-      const getStepAmount = () => {
-        const firstCard = cards[0];
-        const styles = getComputedStyle(container);
-        const gap = parseFloat(styles.columnGap || styles.gap || 0);
-        return firstCard.getBoundingClientRect().width + gap;
-      };
+        const updateActiveCard = () => {
+          cards.forEach((card, index) => {
+            card.classList.toggle('active', index === activeIndex);
+          });
+        };
 
-      const scrollToCard = (index) => {
-        activeIndex = Math.max(0, Math.min(index, cards.length - 1));
-        const left = getStepAmount() * activeIndex;
-        container.scrollTo({ left, behavior: 'smooth' });
+        const getStepAmount = () => {
+          const firstCard = cards[0];
+          const styles = getComputedStyle(container);
+          const gap = parseFloat(styles.columnGap || styles.gap || 0);
+          return firstCard.getBoundingClientRect().width + gap;
+        };
+
+        const scrollToCard = (index) => {
+          activeIndex = Math.max(0, Math.min(index, cards.length - 1));
+          const left = getStepAmount() * activeIndex;
+          container.scrollTo({ left, behavior: 'smooth' });
+          updateActiveCard();
+        };
+
+        const isFullyInView = () => {
+          const rect = container.getBoundingClientRect();
+          return rect.top >= 0 && rect.bottom <= window.innerHeight;
+        };
+
         updateActiveCard();
-      };
 
-      const isFullyInView = () => {
-        const rect = container.getBoundingClientRect();
-        return rect.top >= 0 && rect.bottom <= window.innerHeight;
-      };
+        container.addEventListener('wheel', (event) => {
+          const rect = container.getBoundingClientRect();
+          const insideSection = event.clientY >= rect.top - 40 && event.clientY <= rect.bottom + 40;
+          const maxScroll = container.scrollWidth - container.clientWidth;
 
-      updateActiveCard();
+          if (!insideSection || !isFullyInView()) return;
 
-      container.addEventListener('wheel', (event) => {
-        const rect = container.getBoundingClientRect();
-        const insideSection = event.clientY >= rect.top - 40 && event.clientY <= rect.bottom + 40;
-        const maxScroll = container.scrollWidth - container.clientWidth;
+          if (maxScroll <= 0) {
+            return;
+          }
 
-        if (!insideSection || !isFullyInView()) return;
+          const atStart = container.scrollLeft <= 2;
+          const atEnd = container.scrollLeft >= maxScroll - 2;
 
-        if (maxScroll <= 0) {
-          return;
-        }
+          if (atStart && event.deltaY < 0) {
+            inHorizontalMode = false;
+            return;
+          }
 
-        const atStart = container.scrollLeft <= 2;
-        const atEnd = container.scrollLeft >= maxScroll - 2;
+          if (atEnd && event.deltaY > 0) {
+            inHorizontalMode = false;
+            return;
+          }
 
-        if (!isFullyInView()) return;
-
-        if (atStart && event.deltaY < 0) {
-          inHorizontalMode = false;
-          return;
-        }
-
-        if (atEnd && event.deltaY > 0) {
-          inHorizontalMode = false;
-          return;
-        }
-
-        if (event.deltaY !== 0) {
-          event.preventDefault();
-          inHorizontalMode = true;
-          const direction = event.deltaY > 0 ? 1 : -1;
-          scrollToCard(activeIndex + direction);
-        }
-      }, { passive: false });
-    });
+          if (event.deltaY !== 0) {
+            event.preventDefault();
+            inHorizontalMode = true;
+            const direction = event.deltaY > 0 ? 1 : -1;
+            scrollToCard(activeIndex + direction);
+          }
+        }, { passive: false });
+      });
+    }
   </script>
 </body>
 </html>
