@@ -163,6 +163,10 @@ a {
 	margin: 0 auto;
 }
 
+.intro-grid .card {
+	height: 100%;
+}
+
 .section {
 	padding: 6rem 0;
 }
