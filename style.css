@@ -167,6 +167,19 @@ a {
 	height: 100%;
 }
 
+.intro-grid > .section {
+	display: flex;
+}
+
+.intro-grid > .section > .container {
+	display: flex;
+	width: 100%;
+}
+
+.intro-grid > .section .card {
+	flex: 1;
+}
+
 .section {
 	padding: 6rem 0;
 }
@@ -343,6 +356,11 @@ a {
 /* Small screen adjustments */
 @media (max-width: 600px) {
 	.intro-grid {
+		display: block;
+	}
+
+	.intro-grid > .section,
+	.intro-grid > .section > .container {
 		display: block;
 	}
 
