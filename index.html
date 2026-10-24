@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maven Brown Portfolio</title>
   <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" href="img/image-transparent.png">
 </head>
 <body>
   <!-- Main page content starts here -->
@@ -34,6 +35,7 @@
   </header>
 
   <main>
+    <div class="intro-grid">
     <section class="section" id="about">
       <div class="container card">
         <h2>About</h2>
@@ -58,6 +60,7 @@
         </ul>
       </div>
     </section>
+    </div>
 
     <section class="section" id="skills">
       <div class="container">
@@ -65,16 +68,33 @@
         <div class="skills-list">
           <div class="skill-item">Java</div>
           <div class="skill-item">Python</div>
+          <div class="skill-item">TypeScript</div>
+          <div class="skill-item">C++</div>
           <div class="skill-item">R</div>
           <div class="skill-item">C</div>
           <div class="skill-item">HTML</div>
           <div class="skill-item">CSS</div>
           <div class="skill-item">SQL</div>
           <div class="skill-item">FastAPI</div>
+          <div class="skill-item">React</div>
+          <div class="skill-item">Next.js</div>
+          <div class="skill-item">Node.js</div>
+          <div class="skill-item">Postgres</div>
           <div class="skill-item">Agentic Workflows</div>
+          <div class="skill-item">GitHub Workflows</div>
+          <div class="skill-item">GitHub Copilot</div>
+          <div class="skill-item">Linux Server Administration</div>
+          <div class="skill-item">Software Development Workflows</div>
           <div class="skill-item">JavaFX</div>
           <div class="skill-item">Git</div>
           <div class="skill-item">Docker</div>
+          <div class="skill-item">Statistics</div>
+          <div class="skill-item">Data Modeling</div>
+          <div class="skill-item">Data Analysis</div>
+          <div class="skill-item">Team Leadership</div>
+          <div class="skill-item">Communication</div>
+          <div class="skill-item">Collaboration</div>
+          <div class="skill-item">Root Cause Analysis</div>
           <div class="skill-item">Project Management</div>
           <div class="skill-item">Adobe Premier Pro</div>
           <div class="skill-item">Adobe Photoshop</div>
@@ -118,6 +138,37 @@
       Live Demo!
     </a>
     
+  </div>
+</article>
+
+      <article class="project-card">
+  <h3>Pokedex</h3>
+
+  <p>A full-stack Pokédex application that turns the PokeAPI into a searchable, navigable reference tool for exploring Pokemon and their moves.</p>
+
+  <p><strong>The Problem:</strong> Pokemon data is extensive and spread across several related API resources. The app needed to make that information approachable while handling pagination, loading states, and the relationships between Pokemon, types, stats, evolutions, and moves.</p>
+
+  <p><strong>What I Built:</strong> I built a paginated home page that loads Pokemon through React Query, server-rendered Pokemon detail pages with data from multiple PokeAPI endpoints, and move detail pages with information about type, power, accuracy, and descriptions. I deployed the finished Next.js application to Vercel.</p>
+
+  <p><strong>Tech Stack:</strong> Next.js, React, TypeScript, React Query, Tailwind CSS, PokeAPI, Vercel</p>
+
+  <p><strong>Key Features:</strong></p>
+  <ul>
+    <li>Paginated Pokemon browsing with React Query</li>
+    <li>Pokemon detail pages with stats, types, moves, and evolution data</li>
+    <li>Move detail pages with type, power, accuracy, and descriptions</li>
+    <li>Dynamic routes with server-side data fetching</li>
+  </ul>
+
+  <p><strong>What I Learned:</strong> This project strengthened my understanding of client-side caching, server-side data fetching, dynamic routes, typed API data, and the design decisions needed to make a large information set feel clear and easy to explore.</p>
+
+  <div class="contact-links">
+    <a href="https://comp-426-a04-pokedex-maveneb.vercel.app/" target="_blank" rel="noreferrer">
+      Live Demo
+    </a>
+    <a href="https://github.com/maveneb/comp-426-a04-pokedex-maveneb" target="_blank" rel="noreferrer">
+      GitHub
+    </a>
   </div>
 </article>
 
